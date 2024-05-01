@@ -1,5 +1,5 @@
 import unittest
-import mysql.connector
+import MySQLdb
 import os
 
 
@@ -12,7 +12,7 @@ class TestDatabase(unittest.TestCase):
     """ Test the database connection """
     def setUp(self):
         """ Set up the database connection """
-        self.db = mysql.connector.connect(
+        self.db = MySQLdb.connect(
             host=host,
             user=user,
             password=password,
