@@ -8,6 +8,7 @@ user = os.getenv('HBNB_MYSQL_USER')
 password = os.getenv('HBNB_MYSQL_PWD')
 database = os.getenv('HBNB_MYSQL_DB')
 
+
 class TestDatabase(unittest.TestCase):
     """ Test the database connection """
     def setUp(self):
@@ -17,9 +18,9 @@ class TestDatabase(unittest.TestCase):
             user=user,
             password=password,
             database=database
-        )
+            )
         self.cursor = self.db.cursor()
-    
+
     def test_connection(self):
         """ Test the database connection """
         self.assertTrue(self.db.is_connected())
@@ -33,14 +34,14 @@ class TestDatabase(unittest.TestCase):
         # Get the number of records in the states table
         self.cursor.execute("SELECT COUNT(*) FROM states")
         count_after = self.cursor.fetchone()[0]
-        # Check that the number of records in the states table has increased by 1
+        # Check the number of records in states table has increased by 1
         self.assertEqual(count_after, count_before + 1)
-        
 
     def tearDown(self):
         """ Close the database connection """
         self.cursor.close()
         self.db.close()
+
 
 if __name__ == '__main__':
     unittest.main()
