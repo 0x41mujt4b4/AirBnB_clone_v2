@@ -126,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
 
             kwargs = {}
             args_list = args.split()
-            
+
             for i in range(1, len(args_list)):
                 key, value = args_list[i].split('=')
                 if value.startswith('"'):
