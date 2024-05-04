@@ -31,7 +31,7 @@ class BaseModel:
             setattr(self, 'updated_at', datetime.utcnow())
             for key, value in kwargs.items():
                 if key == 'updated_at' or key == 'created_at':
-                    value = datetime.strptime(value, '%Y-%m-%d %H:%M:%S.%f')
+                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 setattr(self, key, value)
             self.__dict__.update(kwargs)
 
@@ -53,8 +53,12 @@ class BaseModel:
         dictionary.update(self.__dict__)
         dictionary.update({'__class__':
                           str(type(self)).split('.')[-1].split('\'')[0]})
-        dictionary['created_at'] = self.created_at.isoformat()
-        dictionary['updated_at'] = self.updated_at.isoformat()
+        try:
+            dictionary['created_at'] = self.created_at.isoformat()
+            dictionary['updated_at'] = self.updated_at.isoformat()
+        except Exception:
+            pass
+
         if dictionary.get('_sa_instance_state'):
             del dictionary['_sa_instance_state']
         return dictionary
