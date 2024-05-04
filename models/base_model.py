@@ -31,7 +31,7 @@ class BaseModel:
             setattr(self, 'updated_at', datetime.utcnow())
             for key, value in kwargs.items():
                 if key == 'updated_at' or key == 'created_at':
-                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+                    value = datetime.strptime(value, '%Y-%m-%d %H:%M:%S.%f')
                 setattr(self, key, value)
             self.__dict__.update(kwargs)
 
