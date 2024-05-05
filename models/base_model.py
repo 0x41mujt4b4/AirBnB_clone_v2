@@ -27,11 +27,9 @@ class BaseModel:
             if kwargs.get('__class__'):
                 del kwargs['__class__']
             self.id = str(uuid.uuid4())
-            setattr(self, 'created_at', datetime.utcnow())
-            setattr(self, 'updated_at', datetime.utcnow())
+            setattr(self, 'created_at', str(datetime.utcnow()))
+            setattr(self, 'updated_at', str(datetime.utcnow()))
             for key, value in kwargs.items():
-                if key == 'updated_at' or key == 'created_at':
-                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 setattr(self, key, value)
             self.__dict__.update(kwargs)
 
@@ -43,7 +41,7 @@ class BaseModel:
     def save(self):
         """Updates updated_at with current time when instance is changed"""
         from models import storage
-        self.updated_at = datetime.now()
+        self.updated_at = str(datetime.now())
         storage.new(self)
         storage.save()
 
