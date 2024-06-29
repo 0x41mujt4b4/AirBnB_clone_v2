@@ -81,7 +81,7 @@ class test_basemodel(unittest.TestCase):
         """ """
         i = self.value()
         n = i.to_dict()
-        self.assertEqual(i.to_dict(), n)
+        self.assertAlmostEqual(i.to_dict(), n)
 
     def test_kwargs_none(self):
         """ """
