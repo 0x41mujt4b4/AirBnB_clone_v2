@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ """
 import sys
+
+from sqlalchemy import inspect
 from models.base_model import BaseModel
 import unittest
 import datetime
