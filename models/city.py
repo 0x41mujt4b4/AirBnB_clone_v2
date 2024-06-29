@@ -27,6 +27,8 @@ class City(BaseModel, Base):
     else:
         name = ""
         state_id = ""
+
     def __str__(self):
-        """Return the string representation of this City like this '[{name}] ({id}) {dictionary}'."""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        """Return the string representation of City."""
+        class_name = self.__class__.__name__
+        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)

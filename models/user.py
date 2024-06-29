@@ -7,6 +7,7 @@ from sqlalchemy import String
 from sqlalchemy.orm import relationship
 import os
 
+
 class User(BaseModel, Base):
     """Represents a user for a MySQL database.
 
@@ -34,6 +35,8 @@ class User(BaseModel, Base):
         password = ""
         first_name = ""
         last_name = ""
+
     def __str__(self):
-        """Return the string representation of this User like this '[{name}] ({id}) {dictionary}'."""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        """Return the string representation of the User."""
+        class_name = self.__class__.__name__
+        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)

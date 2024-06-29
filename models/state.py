@@ -35,6 +35,8 @@ class State(BaseModel, Base):
                 if city.state_id == self.id:
                     city_list.append(city)
             return city_list
+
     def __str__(self):
-        """Return the string representation of this State like this '[{name}] ({id}) {dictionary}'."""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        """Return the string representation of State."""
+        class_name = self.__class__.__name__
+        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)

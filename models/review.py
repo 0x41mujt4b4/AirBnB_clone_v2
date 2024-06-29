@@ -5,6 +5,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, ForeignKey, Float
 import os
 
+
 class Review(BaseModel, Base):
     """This is the class for Review
     Attributes:
@@ -21,6 +22,8 @@ class Review(BaseModel, Base):
         place_id = ""
         user_id = ""
         text = ""
+
     def __str__(self):
-        """Return the string representation of this Review like this '[{name}] ({id}) {dictionary}'."""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        """Return the string representation of Review."""
+        class_name = self.__class__.__name__
+        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
