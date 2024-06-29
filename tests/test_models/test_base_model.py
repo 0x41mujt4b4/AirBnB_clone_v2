@@ -8,6 +8,7 @@ from uuid import UUID
 import json
 import os
 import pycodestyle
+import pep8
 
 
 class test_basemodel(unittest.TestCase):

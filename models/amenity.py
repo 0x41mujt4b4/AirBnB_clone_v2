@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy.orm import relationship
+import os
 
 
 class Amenity(BaseModel, Base):
@@ -18,7 +19,9 @@ class Amenity(BaseModel, Base):
         place_amenities (sqlalchemy relationship): Place-Amenity relationship.
     """
     __tablename__ = "amenities"
-    name = Column(String(128), nullable=False)
-    place_amenities = relationship("Place", secondary="place_amenity",
+    name = ''
+    if os.getenv('HBNB_TYPE_STORAGE') == 'db':
+        name = Column(String(128), nullable=False)
+        place_amenities = relationship("Place", secondary="place_amenity",
                                    viewonly=False)
 
