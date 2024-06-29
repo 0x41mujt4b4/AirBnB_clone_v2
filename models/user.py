@@ -34,3 +34,6 @@ class User(BaseModel, Base):
         password = ""
         first_name = ""
         last_name = ""
+    def __str__(self):
+        """Return the string representation of this User like this '[{name}] ({id}) {dictionary}'."""
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)

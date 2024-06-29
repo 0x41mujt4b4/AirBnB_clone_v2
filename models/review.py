@@ -21,3 +21,6 @@ class Review(BaseModel, Base):
         place_id = ""
         user_id = ""
         text = ""
+    def __str__(self):
+        """Return the string representation of this Review like this '[{name}] ({id}) {dictionary}'."""
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)

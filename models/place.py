@@ -96,4 +96,7 @@ class Place(BaseModel, Base):
         def amenities(self, value):
             if type(value) == Amenity:
                 self.amenity_ids.append(value.id)
+    def __str__(self):
+        """Return the string representation of this Place like this '[{name}] ({id}) {dictionary}'."""
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 

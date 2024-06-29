@@ -24,4 +24,7 @@ class Amenity(BaseModel, Base):
         name = Column(String(128), nullable=False)
         place_amenities = relationship("Place", secondary="place_amenity",
                                    viewonly=False)
+    def __str__(self):
+        """Return the string representation of this Amenity like this '[{name}] ({id}) {dictionary}'."""
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
