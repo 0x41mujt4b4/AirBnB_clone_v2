@@ -35,8 +35,10 @@ class BaseModel:
         self.created_at = self.updated_at = datetime.utcnow()
         if kwargs:
             for key, value in kwargs.items():
-                if key == "created_at" or key == "updated_at":
+                if key == "created_at":
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                if key == "updated_at":
+                    value = datetime.utcnow()
                 if key != "__class__":
                     setattr(self, key, value)
 
@@ -55,7 +57,7 @@ class BaseModel:
         my_dict = self.__dict__.copy()
         my_dict["__class__"] = str(type(self).__name__)
         my_dict["created_at"] = self.created_at.isoformat()
-        my_dict["updated_at"] = datetime.utcnow().isoformat()
+        my_dict["updated_at"] = self.updated_at.isoformat()
         my_dict.pop("_sa_instance_state", None)
         return my_dict
 
