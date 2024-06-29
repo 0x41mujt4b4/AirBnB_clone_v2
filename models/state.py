@@ -20,8 +20,8 @@ class State(BaseModel, Base):
         name (sqlalchemy String): The name of the State.
         cities (sqlalchemy relationship): The State-City relationship.
     """
+    __tablename__ = "states"
     if getenv("HBNB_TYPE_STORAGE") == "db":
-        __tablename__ = "states"
         name = Column(String(128), nullable=False)
         cities = relationship("City",  backref="state", cascade="delete")
     else:

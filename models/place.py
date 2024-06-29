@@ -45,8 +45,8 @@ class Place(BaseModel, Base):
         amenities (sqlalchemy relationship): The Place-Amenity relationship.
         amenity_ids (list): An id list of all linked amenities.
     """
+    __tablename__ = "places"
     if os.getenv('HBNB_TYPE_STORAGE') == 'db':
-        __tablename__ = "places"
         city_id = Column(String(60), ForeignKey("cities.id"), nullable=False)
         user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
         name = Column(String(128), nullable=False) 

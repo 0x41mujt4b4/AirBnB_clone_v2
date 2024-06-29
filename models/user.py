@@ -21,8 +21,8 @@ class User(BaseModel, Base):
         places (sqlalchemy relationship): The User-Place relationship.
         reviews (sqlalchemy relationship): The User-Review relationship.
     """
+    __tablename__ = "users"
     if os.getenv("HBNB_TYPE_STORAGE") == "db":
-        __tablename__ = "users"
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
         first_name = Column(String(128))
